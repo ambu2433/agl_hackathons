@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # NSE Prediction Agent
+  nse-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nse-agent
+    environment:
+      - SMTP_SERVER=${SMTP_SERVER}
+      - SMTP_PORT=${SMTP_PORT}
+      - EMAIL_SENDER=${EMAIL_SENDER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - EMAIL_RECIPIENTS=${EMAIL_RECIPIENTS}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - UPSTOX_API_KEY=${UPSTOX_API_KEY}
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./logs:/app/logs
+    restart: always
+    command: python scheduler.py
+
+  # Optional: MongoDB for storing predictions
+  mongodb:
+    image: mongo:latest
+    container_name: nse-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    restart: always
+
+volumes:
+  mongodb_data:
+    driver: local

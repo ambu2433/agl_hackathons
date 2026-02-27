@@ -1,0 +1,24 @@
+# Core Data & ML Libraries
+yfinance>=1.2.0
+pandas>=2.0.0
+numpy>=2.0.0
+scikit-learn>=1.6.0
+xgboost>=2.0.0
+ta-lib>=0.4.28
+
+# Utilities
+python-dotenv>=1.0.0
+requests>=2.31.0
+joblib>=1.3.0
+
+# Scheduling & Alerts
+APScheduler>=3.10.0
+python-telegram-bot>=20.0
+
+# Visualization (Optional)
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.0.0
+
+# Optional APIs
+# upstox>=0.0.2  # Uncomment if using Upstox API
