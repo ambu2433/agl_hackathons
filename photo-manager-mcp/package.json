@@ -1,0 +1,29 @@
+{
+  "name": "photo-manager-mcp",
+  "version": "1.0.0",
+  "description": "AI-powered photo management tool for organizing and managing local photos by year",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "review": "node review.js",
+    "analyze": "node server.js && node review.js"
+  },
+  "keywords": [
+    "photos",
+    "management",
+    "ai",
+    "duplicates",
+    "organization"
+  ],
+  "author": "Ambuj",
+  "license": "MIT",
+  "dependencies": {
+    "@groq/sdk": "^0.4.0",
+    "dotenv": "^17.3.1",
+    "sharp": "^0.34.5"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
